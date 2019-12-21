@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    if user
+        h1 Hi #{user.name} ! Welcome to Shopping Mall
+        h3 #{title}
+        ul.list-group
+            each product,i in products
+                li.list-group-item
+                    a(href="/products/"+product._id)=product.product_name
+    else
+        h1 Hi! Login to Start Shopping!

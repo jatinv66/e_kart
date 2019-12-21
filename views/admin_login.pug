@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1 Admin Login
+    form(action='/admins/login' ,method='POST')
+        #from-group
+            label Admin Username:
+            input.form-control(name='username',type='text')
+        #from-group
+            label Password:
+            input.form-control(name='password',type='password')
+            br
+        input.btn.btn-primary(type='submit',value='Login')

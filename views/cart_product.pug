@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1 #{cart_product.cart_product_name}
+        h4 Order Quantity:- #{cart_product.cart_product_quantity}
+        h4 Product Price:- #{cart_product.cart_product_price}
+        h4 Available Units:- #{product.product_quantity};
+        form(method='POST', action='/carts/update/'+cart_product.productID+'/'+cart_product._id+'/'+cart_product.cart_product_name+'/'+cart_product.cart_product_quantity+'/'+cart_product.cart_product_price+'/'+user._id)
+            #from-group
+            label Update Quantity
+            input.form-control(name='updateQuantity',type='text')
+            br
+            input.btn.btn-primary(type='submit',value='Submit')
+        br
+        a.btn.btn-danger.delete-cart-product(href="#",data-cart-id=cart_product._id,user-id=user._id) Delete

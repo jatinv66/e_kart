@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1 #{title}
+    ul.list-group
+        each cart,i in carts
+            li.list-group-item
+                h3
+                     a(href="/carts/"+cart._id+'/'+cart.productID)=cart.cart_product_name
+    a.btn.btn-default(href='/carts/checkout/'+user._id) Checkout

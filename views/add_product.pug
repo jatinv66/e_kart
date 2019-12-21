@@ -1,0 +1,18 @@
+extends admin_layout
+
+block content
+    h1 #{title}
+    form(action="/products/add" method="POST")
+        #from-group
+            label Product Name:
+            input.form-control(name='pname',type='text')
+        #from-group
+            label Product description:
+            input.form-control(name='pdesc',type='text')
+        #from-group
+            label Product Quantity:
+            input.form-control(name='pquantity',type='text')
+        #from-group
+            label Product Price:
+            input.form-control(name='pprice',type='text')
+        input.btn.btn-primary(type='submit',value='Add')

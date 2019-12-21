@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    h1 #{title}
+    form(method="post" ,action='/products/edit/'+product._id )
+        #from-group
+            label Product Name:
+            input.form-control(name='pname',type='text',value=product.product_name)
+        #from-group
+            label Product description:
+            input.form-control(name='pdesc',type='text',value=product.product_desc)
+        #from-group
+            label Product Quantity:
+            input.form-control(name='pquantity',type='text',value=product.product_quantity)
+        #from-group
+            label Product Price:
+            input.form-control(name='pprice',type='text',value=product.product_price)
+        input.btn.btn-primary(type='submit',value='Save')

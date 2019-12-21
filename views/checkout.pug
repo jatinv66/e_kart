@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    h3 #{title}
+    table.table
+        thead
+            tr
+            th(scope='col') Product Name
+            |       
+            th(scope='col') Product Price
+            |       
+            th(scope='col') Product Quantity
+            |       
+            th(scope='col') Total
+        |   
+        each product,i in products
+            tbody
+                tr   
+                td #{product.cart_product_name}
+                |       
+                td #{product.cart_product_price}
+                |       
+                td #{product.cart_product_quantity}
+                |       
+                td #{parseInt(product.cart_product_price)*parseInt(product.cart_product_quantity)}
+        tfoot
+            tr
+            td Total
+            |
+            td
+            |
+            td
+            |
+            td #{total}
+    a.btn.btn-default(href='/carts/checkout/confirm/'+user._id) Confirm
