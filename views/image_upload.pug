@@ -1,0 +1,15 @@
+extends admin_layout
+
+block content
+    .container
+        .row
+            .col-md-6.m-auto
+                h1.test-center.display-4.my-4 Upload Image
+                form(action='/upload', method='POST', enctype='multipart/form-data')
+                    .custom-file.mb-3
+                        input#file.custom-file-input(type='file', name='file')
+                        label Your Filename should be in the GIVEN format:
+                        label For e.g. For image 1: "product_name_01.jpg"
+                        br
+                        label          For image 2: "product_name_02.jpg"
+                    input.btn.btn-primary.btn-block(type='submit', value='submit')

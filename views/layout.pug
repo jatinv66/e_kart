@@ -4,6 +4,8 @@ html
         title Ecommerce
         link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
         link(rel='stylesheet' href='/css/style.css')
+        style(type='text/css').
+            img{width:50%}
     body
         nav.navbar.navbar-inverse
             .container
@@ -18,6 +20,10 @@ html
                     ul.nav.navbar-nav
                         li
                             a(href='/') Home
+                            form(method="get" ,action='/products/search')
+                                #from-group
+                                    input.form-control(name='query',type='text',placeholder='Search...')
+                                    input.btn.btn-primary(type='submit',value='Search')
                     ul.nav.navbar-nav.navbar-right
                         if user
                             li 

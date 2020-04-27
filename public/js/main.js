@@ -33,3 +33,27 @@ $(document).ready(function(){
         });
     });
 });
+
+var showResults = debounce(function(arg){
+    var value = arg.trim();
+    if(value == "" || value.length <= o){
+      $("#search-results").fadOut();
+      return;
+    }else{
+      $("#search-results").fadeIn();
+    };
+    var jqhr = $.get('/products/search', function(data){
+    })
+    .done(function(data){
+      if(data.length === 0){
+        $("search-resuts").append('<p classs="lead text-center mt-2">No Results</p>');
+    }else{
+      data.forEach(x => {
+        $("search-resuts").append('<a href="#"><p class="m-2 lead"><img style="width:60px;" src="images/supreme1.jpg">' + x.title +'</p></a>');
+      });
+    }
+    })
+    .fail(function(err){
+      console.log(err);
+    })
+  },200);

@@ -6,7 +6,22 @@ block content
         h3 #{title}
         ul.list-group
             each product,i in products
-                li.list-group-item
-                    a(href="/products/"+product._id)=product.product_name
+                .col-sm-4
+                    li.list-group-item
+                        p.text-center 
+                            img(src='/image/'+product.product_name+'_01.jpg' alt='hi')
+                            br   
+                            a(href="/products/"+product._id)=product.product_name
+                        p.text-center #{product.product_desc}
     else
         h1 Hi! Login to Start Shopping!
+        ul.list-group
+            each product,i in products
+                .col-sm-4
+                    li.list-group-item
+                        p.text-center 
+                            img(src='/image/'+product.product_name+'_01.jpg' alt='hi')
+                            br   
+                            a(href="/products/pleaseLogin")=product.product_name
+                        p.text-center #{product.product_desc}
+     

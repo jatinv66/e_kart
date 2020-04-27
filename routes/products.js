@@ -3,6 +3,22 @@ const router =express.Router();
 
 let Product=require('../models/product');
 
+//upload image 
+router.get('/imageUpload',function(req,res)
+{
+    res.render("image_upload");
+})
+
+
+
+//please login page
+router.get('/pleaseLogin',(req,res)=>{
+    res.render('pleaseLogin');
+  })
+
+
+
+
 // add route
 router.get('/add',function(req,res){
 res.render('add_product',{
@@ -91,6 +107,25 @@ router.get('/edit/:id',function(req,res){
     });
 });
 
+
+//search product
+router.get('/search',function(req,res){
+    if(req.query.query){
+        //console.log(req.query.query);
+        const regex=new RegExp(escapeRegex(req.query.query),'gi');
+
+        Product.find({product_name:regex},function(err,products){
+            if(err){
+                console.log(err);
+            }else{
+                res.render("search_result",{
+                products:products,
+                })
+            }
+        })
+    }
+});
+
 //get single product
 router.get('/:id',function(req,res){
     Product.findById(req.params.id,function(err,product){
@@ -99,5 +134,12 @@ router.get('/:id',function(req,res){
         });
     });
 });
+
+
+
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports=router;

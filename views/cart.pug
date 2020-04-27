@@ -1,10 +1,17 @@
 extends layout
 
 block content
-    h1 #{title}
-    ul.list-group
-        each cart,i in carts
-            li.list-group-item
-                h3
-                     a(href="/carts/"+cart._id+'/'+cart.productID)=cart.cart_product_name
-    a.btn.btn-default(href='/carts/checkout/'+user._id) Checkout
+    if carts.length
+        h1 #{title}
+        ul.list-group
+            each cart,i in carts
+                .col-sm-4
+                    li.list-group-item
+                        p.text-center 
+                            img(src='/image/'+cart.cart_product_name+'_01.jpg' alt='hi')
+                            br   
+                            a(href="/carts/"+cart._id+'/'+cart.productID)=cart.cart_product_name
+                        p.text-center #{cart.product_desc}
+        a.btn.btn-default(href='/carts/checkout/'+user._id) Checkout
+    else
+        h3 Your Cart is Empty!
