@@ -1,0 +1,22 @@
+extend layout
+
+block content
+    h3 " #{products.length} " Search results :
+    if user
+        ul.list-group
+        each product,i in products
+            .row.col-md-4
+                li.list-group-item
+                    p.text-center
+                        img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_01.jpg',alt="img")
+                    p.text-center
+                        a(href="/products/"+product._id)=product.product_name
+    else
+        ul.list-group
+        each product,i in products
+            .row.col-md-4
+                li.list-group-item
+                    p.text-center
+                        img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_01.jpg',alt="img")
+                    p.text-center
+                        a(href="#")=product.product_name

@@ -4,6 +4,8 @@ html
         title Ecommerce
         link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
         link(rel='stylesheet' href='/css/style.css')
+        style.
+            img{width:50%}
     body
         nav.navbar.navbar-inverse
             .container
@@ -21,6 +23,8 @@ html
                         li
                             a(href='/products/add') Add Product
                     ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href='/upload') Upload Images
                         li 
                             a(href='/admins/logout') logout
         .container
@@ -29,11 +33,14 @@ html
                 each error, i in errors
                     div(class="alert alert-danger") #{error.msg}
             block content
-                    h1 #{title}
-                    ul.list-group
-                        each product,i in products
+                ul.list-group
+                    each product,i in products
+                        .row.col-md-4
                             li.list-group-item
-                                a(href="/products/"+product._id)=product.product_name
+                                p.text-center
+                                    img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_01.jpg',alt="img")
+                                p.text-center
+                                    a(href="/products/"+product._id)=product.product_name
             br
             hr
         script(src='/bower_components/jquery/dist/jquery.js')

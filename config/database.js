@@ -1,5 +1,5 @@
 module.exports = {
-    database:'mongodb://localhost:27017/ecommerce?authSource=admin',
+    database:'mongodb+srv://jatin:jatin@cluster0-k8ykj.mongodb.net/test?retryWrites=true&w=majority',
     secret: 'yoursecret'
   }
   

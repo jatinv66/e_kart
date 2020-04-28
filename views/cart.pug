@@ -2,16 +2,15 @@ extends layout
 
 block content
     if carts.length
-        h1 #{title}
+        h1 Your Cart
         ul.list-group
-            each cart,i in carts
-                .col-sm-4
-                    li.list-group-item
-                        p.text-center 
-                            img(src='/image/'+cart.cart_product_name+'_01.jpg' alt='hi')
-                            br   
-                            a(href="/carts/"+cart._id+'/'+cart.productID)=cart.cart_product_name
-                        p.text-center #{cart.product_desc}
+        each cart,i in carts
+            .row.col-md-4
+                li.list-group-item
+                    p.text-center
+                        img.rounded.mx-auto.d-block(src='/image/'+cart.cart_product_name+'_01.jpg',alt="img")
+                    p.text-center
+                        a(href="/carts/"+cart._id+'/'+cart.productID)=cart.cart_product_name
         a.btn.btn-default(href='/carts/checkout/'+user._id) Checkout
     else
-        h3 Your Cart is Empty!
+        h3.bold Your cart is empty

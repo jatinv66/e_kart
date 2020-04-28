@@ -1,15 +1,23 @@
-extends admin_layout
+extend admin_layout
 
 block content
-    .container
-        .row
-            .col-md-6.m-auto
-                h1.test-center.display-4.my-4 Upload Image
-                form(action='/upload', method='POST', enctype='multipart/form-data')
-                    .custom-file.mb-3
-                        input#file.custom-file-input(type='file', name='file')
-                        label Your Filename should be in the GIVEN format:
-                        label For e.g. For image 1: "product_name_01.jpg"
-                        br
-                        label          For image 2: "product_name_02.jpg"
-                    input.btn.btn-primary.btn-block(type='submit', value='submit')
+    h1 Select Image To upload
+    h3.bold Note: File name should be in the given form:
+    h4 "product_name_01.jpg"
+    h4 "product_name_02.jpg"
+    form(action="/upload" method="POST" enctype="multipart/form-data")
+        #from-group
+            input.form-control(name='file',type='file')
+        input.btn.btn-primary(type='submit',value='submit')
+    if files
+        ul.list-group
+            each file, i in files
+                .row.col-md-4
+                    li.list-group-item
+                        .card.cardbody.mb3
+                            if file.isImage
+                                p.text-center
+                                    img(src='/image/'+file.filename,alt="img")
+                                p.text-center #{file.filename}
+                                p.text-center
+                                    a.btn.btn-danger.delete-image(href="#",image-id=file._id) Delete

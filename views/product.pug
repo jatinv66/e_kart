@@ -2,13 +2,12 @@ extends layout
 
 block content
     h1 #{product.product_name}
-        br
-        img(src='/image/'+product.product_name+'_01.jpg' alt='hi')
-        img(src='/image/'+product.product_name+'_02.jpg' alt='hi')
         h4 Product description:- #{product.product_desc}
         h4 Product Quantity:- #{product.product_quantity}
         h4 Product Price:- #{product.product_price}
         if user
+            img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_01.jpg',alt="img")
+            img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_02.jpg',alt="img")
             form(method='POST', action='/carts/addtocart/'+product._id+'/'+product.product_name+'/'+product.product_price+'/'+product.product_quantity+'/'+user._id)
                 #from-group
                 label How much would you like to order:
