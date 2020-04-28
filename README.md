@@ -1,8 +1,4 @@
-# Article Knowledgebase Application
-
-This is a knowledgebase app used in the "Node.js & Express From Scratch" Youtube series.
-
-## Technologies
+## Technologies ##
 * Node.js
 * Express
 * Express Messages, Session, Connect Flash & Validation
@@ -11,13 +7,7 @@ This is a knowledgebase app used in the "Node.js & Express From Scratch" Youtube
 * Passport.js Authentication
 * BCrypt Hashing
 
-### Version
-2.0.0
-
-## Usage
-
-
-### Installation
+### Installation ##
 
 Install the dependencies
 
