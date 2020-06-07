@@ -1,0 +1,28 @@
+extends admin_layout
+
+block content
+    h1 Orders
+    each order,i in orders
+        .row.col-md-8
+            li.list-group-item
+                h3 User ID:- #{order.uid}
+                h3 Address:-
+                ul
+                    li="Address:- "+order.paddress
+                    li="City:- "+order.city
+                    li="Landmark:- "+order.landmark
+                    li="Contact Number:- "+order.mobileNumber
+                    li="State:- "+order.state
+                h3 Product Details
+                ol
+                    each j in order.order
+                        li
+                            h3 Product Name:- #{j.cart_product_name}
+                            h3 Product Quantity:- #{j.cart_product_quantity}
+                            h3 Product Price:- #{j.cart_product_price}
+                if order.status=="pending"
+                    h3(style='color:red;') Status :- #{order.status}
+                else
+                    h3(style='color:green;') Status :- #{order.status}
+            a.btn.btn-default(href='/admins/orders/markFulfilled/'+order.uid) Mark as Fulfilled
+                            

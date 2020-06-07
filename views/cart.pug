@@ -11,6 +11,8 @@ block content
                         img.rounded.mx-auto.d-block(src='/image/'+cart.cart_product_name+'_01.jpg',alt="img")
                     p.text-center
                         a(href="/carts/"+cart._id+'/'+cart.productID)=cart.cart_product_name
-        a.btn.btn-default(href='/carts/checkout/'+user._id) Checkout
+                    p.text-center #{cart.cart_product_price}
+        h3 Total #{total}
+        a.btn.btn-primary(href='/users/address/'+total+'/'+carts+'/'+user._id) Purchase               
     else
         h3.bold Your cart is empty

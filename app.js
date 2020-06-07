@@ -13,8 +13,6 @@ const GridFsStorage=require('multer-gridfs-storage');
 const Grid=require('gridfs-stream');
 const methodOverride=require('method-override');
 
-
-
 mongoose.connect(config.database);
 let db=mongoose.connection;
 
@@ -77,6 +75,9 @@ const storage = new GridFsStorage({
 //init app
 const app=express();
 
+
+const port =process.env.PORT || 3000;
+
 //bring in models
 let Product=require('./models/product');
 
@@ -133,7 +134,15 @@ app.get('*', function(req, res, next){
     res.locals.user = req.user || null;
     next();
   });
-
+// app.get('/test',function(req,res,next){
+//   console.log('1');
+//   next();
+// },function(req,res,next){
+//   console.log('2');
+//   next();
+// },function(req,res,next){
+//   console.log('3');
+// })
   //home route
 app.get('/',function(req,res){
   Product.find({},function(err,products){
@@ -233,6 +242,6 @@ app.use('/users',users);
 app.use('/carts',carts);
 app.use('/admins',admins);
 //start server
-app.listen(3000,function(){
+app.listen(port,function(){
     console.log('server started on port 3000');
 })

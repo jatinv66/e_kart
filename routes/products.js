@@ -91,12 +91,12 @@ router.get('/edit/:id',function(req,res){
     });
 });
 
-//INDEX - show all campgrounds
+//INDEX - show all products
 router.get("/search", function(req, res){
     var noMatch = null;
     if(req.query.query) {
         const regex = new RegExp(escapeRegex(req.query.query), 'gi');
-        // Get all campgrounds from DB
+        // Get all products from DB
         Product.find({product_name: regex}, function(err, products){
            if(err){
                console.log(err);

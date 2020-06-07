@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    h3 #{title}
+    h1 #{user}
     table.table
         thead
             tr
@@ -32,4 +32,8 @@ block content
             td
             |
             td #{total}
-    a.btn.btn-default(href='/carts/checkout/confirm/'+user._id) Confirm
+    form(action='/carts/charge/'+total+'/'+products+'/'+uid+'/'+address.paddress+'/'+address.mobileNumber+'/'+address.state+'/'+address.city+'/'+address.landmark, method='POST')
+        script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key='pk_test_8iOvKO7QyqHVoxN4Zh9t2mqb00ASNTG585', data-amount=total, data-name=carts, data-description=carts,data-zip-code='true', data-locale='auto')
+        script.
+            document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
+        button.btn.btn-outline-dark.text-white.btn-lg(type='submit') Proceed to payment

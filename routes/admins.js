@@ -5,6 +5,8 @@ const passport = require('passport');
 
 let Admin = require('../models/admin');
 let Product=require('../models/product');
+let Order=require('../models/order');
+
 
 
 router.get('/login', function(req, res){
@@ -39,4 +41,32 @@ router.get('/logout', function(req, res){
   req.flash('success', 'You are logged out');
   res.redirect('/admins/login');
 });
+
+
+router.get('/orders',function(req,res){
+  Order.find({},function(err,orders){
+    if(err){
+      console.log(err);
+    }else{
+      //console.log(orders);
+      res.render('admin_order',{
+        orders:orders
+      })
+    }
+  })
+})
+
+
+router.get('/orders/markFulfilled/:id',function(req,res){
+  Order.update({uid:req.params.id},{status:"fulfilled"},function(err){
+    if(err){
+      console.log(err);
+    }else{
+      //console.log(orders);
+      req.flash('success','Marked as Fulfilled');
+      res.redirect('/admins/orders');
+    }
+  })
+})
+
   module.exports =router;

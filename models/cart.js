@@ -22,6 +22,10 @@ let cartSchema=mongoose.Schema({
     cart_product_price:{
         type:Number,
         required:true
+    },
+    cart_product_desc:{
+        type:String,
+        required:true
     }
 });
 let Cart =module.exports =mongoose.model('Cart',cartSchema);

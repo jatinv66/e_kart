@@ -1,0 +1,21 @@
+extends layout 
+
+block content
+    form(action="/users/address/"+user._id, method="POST")
+        #from-group
+            label Permanent Address:
+            input.form-control(name='paddress',type='text')
+        #from-group
+            label Mobile Number:
+            input.form-control(name='mobileNumber',type='text')
+        #from-group
+            label State:
+            input.form-control(name='state',type='text')
+        #from-group
+            label City/town:
+            input.form-control(name='city',type='text')
+        #from-group
+            label Landmark:
+            input.form-control(name='landmark',type='text')
+        br
+        input.btn.btn-primary(type='submit',value='Continue')

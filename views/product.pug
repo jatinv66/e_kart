@@ -8,7 +8,7 @@ block content
         if user
             img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_01.jpg',alt="img")
             img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_02.jpg',alt="img")
-            form(method='POST', action='/carts/addtocart/'+product._id+'/'+product.product_name+'/'+product.product_price+'/'+product.product_quantity+'/'+user._id)
+            form(method='POST', action='/carts/addtocart/'+product._id+'/'+product.product_name+'/'+product.product_price+'/'+product.product_desc+'/'+product.product_quantity+'/'+user._id)
                 #from-group
                 label How much would you like to order:
                 input.form-control(name='orderq',type='text')
