@@ -4,21 +4,22 @@ block content
     if user
         h1 Hi #{user.name} ! Welcome to Shopping Mall
         ul.list-group
-            each product,i in products
-                .row.col-md-4
-                    li.list-group-item
-                        p.text-center
-                            img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_01.jpg',alt="img")
-                        p.text-center
-                            a(href="/products/"+product._id)=product.product_name
+        .flex-container
+            each product,i in products    
+                .container-product
+                    img(src='/image/'+product.product_name+'_01.jpg',alt="img")
+                    a(href="/products/"+product._id)=product.product_name
+                    if product.product_quantity!=0
+                        h3(style='color:green;') In Stock
+                    else
+                        h3(style='color:red;') Out of Stock!
     else
         h1 Hi there ! Welcome to Shopping Mall , Please Login/SignUp for better experience!
         ul.list-group
+        .flex-container
             each product,i in products
-                .row.col-md-4
-                    li.list-group-item
-                        p.text-center
-                            img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_01.jpg',alt="img")
-                        p.text-center
-                            a(href="#")=product.product_name
+                .container-product
+                
+                    img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_01.jpg',alt="img")
+                    a(href="#")=product.product_name
         

@@ -5,16 +5,19 @@ block content
         h4 Product description:- #{product.product_desc}
         h4 Product Quantity:- #{product.product_quantity}
         h4 Product Price:- #{product.product_price}
-        if user
-            img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_01.jpg',alt="img")
-            img.rounded.mx-auto.d-block(src='/image/'+product.product_name+'_02.jpg',alt="img")
-            form(method='POST', action='/carts/addtocart/'+product._id+'/'+product.product_name+'/'+product.product_price+'/'+product.product_desc+'/'+product.product_quantity+'/'+user._id)
-                #from-group
-                label How much would you like to order:
-                input.form-control(name='orderq',type='text')
-                input.btn.btn-primary(type='submit',value='Submit')
-        else
-            hr
-            a.btn.btn-default(href='/products/edit/'+product._id) Edit
-            a.btn.btn-danger.delete-product(href="#",data-id=product._id) Delete
-            br
+    if user
+        .flex-container
+            .container-image
+                img(src='/image/'+product.product_name+'_01.jpg',alt="img")
+            .container-image
+                img(src='/image/'+product.product_name+'_02.jpg',alt="img")
+        form(method='POST', action='/carts/addtocart/'+product._id+'/'+product.product_name+'/'+product.product_price+'/'+product.product_desc+'/'+product.product_quantity+'/'+user._id)
+            #from-group
+            label How much would you like to order:
+            input.form-control(name='orderq',type='text')
+            input.btn.btn-primary(type='submit',value='Submit')
+    else
+        hr
+        a.btn.btn-default(href='/products/edit/'+product._id) Edit
+        a.btn.btn-danger.delete-product(href="#",data-id=product._id) Delete
+        br

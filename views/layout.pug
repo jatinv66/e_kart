@@ -3,9 +3,9 @@ html
     head
         title Ecommerce
         link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css')
         link(rel='stylesheet' href='/css/style.css')
         style.
-            img{width:50%}
     body
         nav.navbar.navbar-inverse
             .container
@@ -21,10 +21,10 @@ html
                         li
                             a(href='/') Home
                         li
-                            form(action="/products/search" method="get")
-                                #from-group
-                                    input.form-control(name='query',type='text')
-                                input.btn.btn-primary(type='submit',value='search')
+                            form(class="nav-search" action="/products/search" method="get")
+                                input.form-control(name='query',placeholder='Search...',type='text')
+                                button(type='sumbit').mag-link.mag-link1
+                                    i.fi-magnifying-glass.large.magnify
                     ul.nav.navbar-nav.navbar-right
                         if user
                             li 
